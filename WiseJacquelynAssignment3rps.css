@@ -1,0 +1,85 @@
+body {
+	text-align: center;
+}
+
+.userChoice {
+	margin: auto;
+	width: 90%;
+}
+
+.outcome {
+	height: 100px;
+}
+
+.userChoice > button {
+	border-radius: 15%;
+	margin: 2px;
+	background-color: white;
+	box-shadow: 1.5px 1.5px gray;
+}
+
+button > img {
+	border-radius: 15%;
+}
+
+
+#rock {
+	width: 30%;
+	max-width: 300px;
+}
+
+#paper {
+	width: 30%;
+	max-width: 300px;
+}
+
+#scissors {
+	width: 30%;
+	max-width: 300px;
+}
+
+#buttonPic {
+	height: 100%;
+	width: 100%;
+}
+
+h1, p {
+	font-family: 'Ink Free';
+}
+
+h1 {
+	font-size: 50px;
+	text-align: center;
+}
+
+p {
+	font-size: 25px;
+}
+
+h3 {
+	font-family: 'Ink Free';
+	font-weight: bold;
+	font-size: 30px;
+}
+
+.decisionHelp {
+	margin: auto;
+	width: 50%;
+}
+
+@media screen and (max-width: 1000px){
+	p {
+		font-size: 18px;
+	}
+	
+	h3 {
+		font-size: 25px;
+	}
+}
+
+@media screen and (max-width: 500px){
+	h1 {
+		font-size: 40px;
+	}
+
+}

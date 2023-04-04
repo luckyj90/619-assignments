@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Seventeen Syllables</title>
+  <!--the code below links this html doc to a stylesheet to give the webpage style-->
+  <link rel="stylesheet" href="WiseJacquelynAssignment1.css"> 
+</head>
+<body>
+	<script>
+	window.onload = makePhrases;
+		function makePhrases() {
+		  //words1, words2, and words3 make up firstLine of the haiku, which has 5 syllables.
+		  //each word in words1 is 1 syllable, and each words is a number
+		  var words1 = ["One", "Two", "Three", "Four", "Five"];
+		  //each word in words 2 is one syllable, and each word is an animal whose singular and plural  is identical
+		  var words2 = ["deer", "fish", "moose", "swine", "sheep"];
+		  //each word in words 3 is a three syllable verb
+		  var words3 = ["galloping", "frolicking", "pivoting", "ribbiting", "modeling", "fidgeting"];
+		  
+		  //words4, words5, and words 6 make up secondLine of the haiku, which has 7 syllables.
+		  //each word in words4 is 1 syllable and is also a word that can begin a question
+		  var words4 = ["how", "why", "where", "when", "what", "who", "then"];
+		  //each word in words5 is 1 syllable and can come after any word in words4 to develop a question
+		  var words5 = ["could", "do", "won't", "will", "did"];
+		  //each word in words6 is 1 syllable and inserts a subject into the secondLine question
+		  var words6 = ["they", "we", "you"];
+		  //each word in words 7 is a 3 syllable verb
+		  var words7 = ["adventure", "remember", "establish", "diminish", "enlighten"];
+		  
+		  //words8, words9, and words10 make up thirdLine of the haiku, which has 5 syllables
+		  //each word in words8 is a 2 syllable word indicating frequency
+		  var words8 = ["Never", "Always", "Sometimes", "Rarely", "Often"];
+		  //each word in words9 is a 2 syllable verb
+		  var words9 = ["picture", "expect", "recall", "obey", "scatter"];
+		  //each word in words10 is a 1 syllable emotion
+		  var words10 = ["joy", "grief", "fear", "pride", "hope"];
+
+		  //the following 10 vars (rand1-rand10) each randomize one selection from words1-words10
+		  var rand1 = Math.floor(Math.random() * words1.length);
+		  var rand2 = Math.floor(Math.random() * words2.length);
+		  var rand3 = Math.floor(Math.random() * words3.length);
+		  var rand4 = Math.floor(Math.random() * words4.length);
+		  var rand5 = Math.floor(Math.random() * words5.length);
+		  var rand6 = Math.floor(Math.random() * words6.length);
+		  var rand7 = Math.floor(Math.random() * words7.length);
+		  var rand8 = Math.floor(Math.random() * words8.length);
+		  var rand9 = Math.floor(Math.random() * words9.length);
+		  var rand10 = Math.floor(Math.random() * words10.length);
+		  
+		  //this var combines a random selection of words from words1, words2, and words3 that will make up the first line of the haiku
+		  var firstLine = words1[rand1] + " " + words2[rand2] + " " + words3[rand3];
+		  //this var combines a random selection of words from words4, words5, words6, and words7 that will make up the second line of the haiku
+		  //this var starts with "And" for the sake of providing additional structure to the randomized haiku and ends witha  question mark
+		  var secondLine = "And " + words4[rand4] + " " + words5[rand5] + " " + words6[rand6] + " " + words7[rand7] + "?";
+		  //this var combines a random selection of words from words8, words9, and words10 that will make up the third line of the haiku
+		  var thirdLine = words8[rand8] + " " + words9[rand9] + " " + words10[rand10];
+
+		  // The following code will generate firstPhrase, secondPhrase, and thirdPhrase within named p elements, rather than as a popup window. 
+		  // I used the following source to achieve this: https://www.w3schools.com/tags/tag_script.asp on 2/14/23		  
+		  var aTag = document.getElementById("line1").innerHTML = firstLine; 
+		  aTag.innerHTML = firstLine;
+		  
+		  var bTag = document.getElementById("line2").innerHTML = secondLine;
+		  bTag.innerHTML = secondLine;
+		  
+		  var cTag = document.getElementById("line3").innerHTML = thirdLine;
+		  cTag.innerHTML = thirdLine;
+		};
+	</script>
+	<p></p>
+	<!--The div below holds the refresh button a user can click to generate a new haiku.-->
+	<div class="refresh">
+		<!--source: https://www.freecodecamp.org/news/refresh-the-page-in-javascript-js-reload-window-tutorial/ on 2/18/23-->
+		<button id="button" type="button" onClick="window.location.reload()">New Haiku</button> 
+	</div>
+	<p></p>
+	<!--The div below has holds the page title and haiku generator-->
+	<div class="generator">
+		<div class="title">
+			<h1>Seventeen Syllables</h1>
+		</div>
+		<!--The div below has three lines that each call var aTag, bTag or cTag, each line of the haiku-->
+		<div class="haiku">
+			<p id = "line1"></p>
+			<p id = "line2"></p>
+			<p id = "line3"></p>
+		</div>
+	</div>
+</body>
+</html>

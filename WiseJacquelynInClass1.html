@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Number Party</title>
+	<script>
+		var value1 = 0;
+		var value2 = 0;
+		var value3 = 0;
+		
+		window.onload = function(){ //this is a generic function - useful for setting up a button onclick	
+			var button = document.getElementById("button");
+			button.onclick = GetNumber;
+			//next three lines set the value in each input to 0 once the page is reloaded
+			document.getElementById("number").value = 0;
+			document.getElementById("numberTwice").value = 0;
+			document.getElementById("numberSquare").value = 0;
+		}
+		
+		function GetNumber(){
+			if ((value1 != Number(document.getElementById("number").value)) && (value1 != null)) {
+				value1 = Number(document.getElementById("number").value)
+				value2 = value1 * 2;
+				value3 = value1 * value1;
+				document.getElementById("numberTwice").value = value2; //inserts valueTwo as placeholder for Box 2	
+				document.getElementById("numberSquare").value = value3; //inserts valueSquare as placeholder for Box 3
+				console.log("value1 changed");
+				console.log(value1);
+				console.log(value2);
+				console.log(value3);
+			} 	//if the value of "number" is not 0 or null, then the value of that input becomes a number, if possible
+				//value1 also gets changed to the number version of "number" input
+				//value2 and value3 are changed to be 2x value1 and value1 squared respectively
+				//the input for "numberTwice" becomes value2
+				//the input for "numberSquare" becomes value3
+			else if ((value2 != Number(document.getElementById("numberTwice").value)) && (value2 != null)) {
+				value2 = Number(document.getElementById("numberTwice").value)
+				value1 = value2 / 2;
+				value3 = value1 * value1;
+				document.getElementById("number").value = value1;
+				document.getElementById("numberSquare").value = value3;
+				console.log("value2 changed");
+				console.log(value1);
+				console.log(value2);
+				console.log(value3);
+			}	//if the value of "numberTwice" is not 0 or null, then the value of that input becomes a number, if possible
+				//value2 also gets changed to the number version of "numberTwice" input
+				//value1 and value3 are changed to be half of value2 and value1 squared respectively
+				//the input for "number" becomes value1
+				//the input for "numberSquare" becomes value3
+			else if ((value3 != Number(document.getElementById("numberSquare").value)) && (value3 != null)) {
+				value3 = Number(document.getElementById("numberSquare").value)
+				value1 = Math.sqrt(value3); //w3schools was used to figure out how to square root a value
+				value2 = value1 * 2;
+				document.getElementById("number").value = value1;
+				document.getElementById("numberTwice").value = value2;
+				console.log("value3 changed");
+				console.log(value1);
+				console.log(value2);
+				console.log(value3);
+			}	//if the value of "numberSquare" is not 0 or null, then the value of the input becomes the input as a number, if possible
+				//value3 also gets changed to the number version of "numberSquare" input
+				//value1 and value2 are changed to be the square root of value3 and value1 x2 respectively
+				//the input for "number" becomes value1
+				//the input for "numberTwice" becomes value2
+			else {
+				console.log("no numbers changed");
+			}
+		}
+				
+	</script>
+	<!--below is some light styling for the page-->
+	<style>
+		body {text-align: center;}
+		#directions {width: 200px; margin: auto; padding: 15px;}
+		#filler {height: 5px;}
+	</style>
+</head>
+<body>
+	<h1>Welcome to the Number Party!</h1>
+	<p id="directions"><em>Please enter a number in any box. When you are ready, click "Show me my numbers!" for a mathematical surprise!</em></p>
+	<p>Number</p><input id="number" type="text"></input>
+	<p>Number Doubled</p><input id="numberTwice" type="text"></input>
+	<p>Number Squared</p><input id="numberSquare" type="text"></input>
+	<p id="filler"></p>
+	<button id="button">Show me my numbers!</button>
+</body>

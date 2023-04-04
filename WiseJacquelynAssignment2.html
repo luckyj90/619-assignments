@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Mastermind</title>
+	<link rel="stylesheet" href="WiseJacquelynAssignment2.css">
+	<spript src="https://code.jquery.com/jquery-2.1.0.js""></script>
+	<script>
+		var sequence;
+		//var guess;
+		//var results;
+		
+		//generates a randomized sequence as an array
+		function makeSequence() {
+			var color1 = ["R", "O", "Y", "G", "B", "V"];
+			var color2 = ["R", "O", "Y", "G", "B", "V"];
+			var color3 = ["R", "O", "Y", "G", "B", "V"];
+			var color4 = ["R", "O", "Y", "G", "B", "V"];
+			var rand1 = Math.floor(Math.random() * color1.length);
+			var rand2 = Math.floor(Math.random() * color2.length);
+			var rand3 = Math.floor(Math.random() * color3.length);
+			var rand4 = Math.floor(Math.random() * color4.length);
+			
+			var c1 = color1[rand1];
+			var c2 = color2[rand2];
+			var c3 = color3[rand3];
+			var c4 = color4[rand4];
+			  
+			var colors = [c1, c2, c3, c4];
+			console.log("Randomly generated colors:", colors);
+			  
+			sequence = colors;
+			
+		};
+
+		//makes an array from user input
+		function getGuess() {
+			var g1 = String(document.getElementById("firstColor").value);
+			var g2 = String(document.getElementById("secondColor").value);
+			var g3 = String(document.getElementById("thirdColor").value);
+			var g4 = String(document.getElementById("fourthColor").value);
+			
+			var guess = [g1, g2, g3, g4];			
+	
+			//an array of user input that can be displayed on the webpage
+			var guessDisplay = g1 + g2 + g3 + g4;
+							
+			//displays the user's guesses on the webpage
+			
+			var allGuesses = document.createElement("li");
+			allGuesses.innerHTML = guessDisplay;
+			
+			var display = document.getElementById("display");	
+			display.appendChild(allGuesses);
+			
+			
+			return guess;
+		};
+		
+		//compares the guessed values with the target values
+		function compareValues(s) {
+			var g = getGuess();
+			console.log(g);	
+			//declare a variable that will later be filled
+			var arr = [" No", " No", " No", " No"];
+			
+			for(var i=0; i < g.length; i++){
+				//if value exists AND it is in the correct index
+				if (g[i] == sequence[i]){
+						arr[i] = " Yes"
+				}
+				//else if value exista and matched
+				else {
+					for(var j=0; j < sequence.length; j++){
+						if (g[i] == sequence[j] ){
+							arr[i] = " Close"
+						}
+					}
+				}
+				
+			};	
+			
+			var bTag = document.getElementById("output").innerHTML = arr; 
+				bTag.innerHTML = arr;
+			
+			console.log("Your guess: ", g);
+			console.log(arr);
+			
+			//if input == sequence, display winning message			
+			if (arr[0] == " Yes" && arr[1] == " Yes" && arr[2] == " Yes" && arr[3] == " Yes") {
+				window.alert("You win!")
+			}
+
+			//if array input != sequence, return to ask for input			
+			else {
+				window.alert("Guess again.")
+			};
+			
+			console.log(arr);				
+			return arr;				
+			
+		};
+
+		//function to reset the game 
+		function resetGame(){
+			makeSequence;
+			
+			document.getElementById("firstColor").value = "X"
+			document.getElementById("secondColor").value = "X"
+			document.getElementById("thirdColor").value = "X"
+			document.getElementById("fourthColor").value = "X"
+			
+			document.getElementById("output").innerHTML = ""
+			document.getElementById("display").innerHTML = ""
+		
+		};
+
+		window.onload = makeSequence;
+		
+		//play again button to clear guesses and rerun from beginning
+	</script>
+</head>
+<body>
+	<h1>MASTERMIND</h1>
+	<div class="directions">
+		<h3>How to Play</h3>
+		<ol>
+			<li>In each box, select one color.</li>
+			<li>Once you select your colors, click "Check My Guess" to see how close you are.</li>
+			<li>Your guesses will all appear below!</li>
+		</ol>
+	</div>
+	
+	<div id="feedback">
+		<p>Your feedback may be:</p>
+		<ul>
+			<li>Close: Your color is in the mystery sequence, but not in the place you guessed it.</li>
+			<li>Yes: Your color is in the right place!</li>
+			<li>No: Your color is not in the mystery sequence.</li>
+		</ul>
+	</div>
+	
+	<div id="game">
+	
+		<!--https://www.w3schools.com/tags/tag_select.asp-->
+		<!--Used w3schools for reference on dropdown selections-->
+		
+		<label for="guess">Take a guess!</label>
+		<br></br>		
+		<select name="firstColor" id="firstColor">
+			<option value="X" class="pick">Color 1</option>
+			<option value="R" class="red">Red</option>
+			<option value="O" class="orange">Orange</option>
+			<option value="Y" class="yellow">Yellow</option>
+			<option value="G" class="green">Green</option>
+			<option value="B" class="blue">Blue</option>
+			<option value="V" class="violet">Violet</option>
+		</select>
+		
+		<select name="secondColor" id="secondColor">
+			<option value="X" class="pick">Color 2</option>
+			<option value="R" class="red">Red</option>
+			<option value="O" class="orange">Orange</option>
+			<option value="Y" class="yellow">Yellow</option>
+			<option value="G" class="green">Green</option>
+			<option value="B" class="blue">Blue</option>
+			<option value="V" class="violet">Violet</option>
+		</select>
+		
+		<select name="thirdColor" id="thirdColor">
+			<option value="X" class="pick">Color 3</option>
+			<option value="R" class="red">Red</option>
+			<option value="O" class="orange">Orange</option>
+			<option value="Y" class="yellow">Yellow</option>
+			<option value="G" class="green">Green</option>
+			<option value="B" class="blue">Blue</option>
+			<option value="V" class="violet">Violet</option>
+		</select>
+		
+		<select name="fourthColor" id="fourthColor">
+			<option value="X" class="pick">Color 4</option>
+			<option value="R" class="red">Red</option>
+			<option value="O" class="orange">Orange</option>
+			<option value="Y" class="yellow">Yellow</option>
+			<option value="G" class="green">Green</option>
+			<option value="B" class="blue">Blue</option>
+			<option value="V" class="violet">Violet</option>
+		</select>
+		<br></br>
+		<button id="submit" onclick="compareValues(sequence)">Check My Guess</button>
+	</div>
+
+	<p id="output"></p>
+	<p>You have guessed:</p>
+	<ol id="display"></ol>
+	<button id="newGame" onclick="resetGame()">Play Again</button>
+</body>

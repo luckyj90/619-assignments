@@ -1,0 +1,42 @@
+body {
+	background-color: #FFC890;
+	font-family: "Comic Sans MS", cursive;
+}
+
+@font-face {
+	unicode-range: U+0052;
+	color: red;
+}
+
+#game {
+	text-align: center;
+}
+
+select {
+	height: 75px;
+	width: 75px;
+}
+
+.red {
+	background-color: #FF8181;
+}
+
+.orange {
+	background-color: #FFC06C;
+}
+
+.yellow {
+	background-color: #FAFF8B;
+}
+
+.green {
+	background-color: #86FF9F;
+}
+
+.blue {
+	background-color: #B3EFFF;
+}
+
+.violet {
+	background-color: #DFAFFF;
+}

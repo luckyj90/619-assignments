@@ -1,0 +1,51 @@
+/* Below is to set a color for the background of the haiku generator page. */
+body {
+	background-color: #FFE7C5;
+	padding: 20px;
+}
+
+/* Below is to set the style for where the haiku is generated, aka the div with the class of "generator". */
+.generator {
+	background-color: #FFFFFF;
+	color: #000000;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 650px;
+	height: 1000px;
+	opacity: 75%;
+	border: solid;
+	border-color: black;
+	justify-content: space-evenly;
+	background-image: url(https://images.unsplash.com/photo-1635714257063-3277d61cb1df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=782&q=80);
+	/*photo source: https://unsplash.com/s/photos/typewriter */
+}
+
+/* Below centers both p and h1 text, and also sets the automatic font to Courier New and directs the browser to use monospace if the page runs on a browser that does not support Courier New */
+p, h1 {
+	text-align: center;
+	font-family: 'Courier New', monospace;
+}
+
+/* Below sets the font size for all h1 elements */
+h1 {
+	font-size: 30px;
+}
+
+/* Centers the "New Haiku" button */
+.refresh {
+	text-align: center;
+}
+
+/* Moves the title down and desigates a hex color for the title */
+.title {
+	padding-top: 25px;
+	color: #FFE7C5;
+}
+
+/*positions the haiku in front of the typewriter paper and selects a font size for the haiku */
+.haiku {
+	padding-top: 80px;
+	padding-left: 225px;
+	font-size: 17px;
+}

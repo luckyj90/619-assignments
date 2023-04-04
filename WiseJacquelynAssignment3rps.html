@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>Rock, Paper, Scissors</title>
+		<meta charset="utf-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script>
+		//1. make variable for computer choice
+			var compChoice;
+
+		//2. make function for computer choice
+			// window.onload = compPick;
+			
+			function compPick(){
+				var rps = ["rock", "paper", "scissors"];
+				var rand1 = Math.floor(Math.random() * 3);
+				compChoice = rps[rand1];
+				return compChoice;
+			}
+			compChoice = compPick();
+			console.log("compChoice is " + compChoice);
+
+		//3. make function to count rounds and time out game
+			var round = 0
+			
+			roundLimit = 0
+			function getRounds(){
+				roundLimit = prompt("How many rounds do you want to play?", 3);
+				//used stackoverflow to figure out how to account for empty input or null value
+				//https://stackoverflow.com/questions/20533127/detect-empty-value-on-prompt
+				if (roundLimit == ""){
+					roundLimit = 3
+				}
+				
+				else if (roundLimit){
+				}
+				
+				else {
+					roundLimit = 3
+				}
+				return roundLimit;
+			}
+			roundLimit = getRounds();			
+			
+			function countRounds(){	
+				if (round == (roundLimit - 1)) {
+					var rounds = document.createElement("p");
+					rounds.innerHTML = ("Game over.");
+						
+					var result = document.getElementById("result");	
+					result.appendChild(rounds);
+						
+					//https://www.w3schools.com/jsref/prop_pushbutton_disabled.asp
+					document.getElementById("rock").disabled = true;
+					document.getElementById("paper").disabled = true;
+					document.getElementById("scissors").disabled = true;
+				}
+						
+				else {
+					round++;
+					console.log(round);
+				}
+
+				return round;
+			};	
+			
+		//4. make functions to get user choice from buttons, compare to compChoice, and display results to user
+			
+			function pickRock(){
+				
+				var outcome = document.createElement("p");
+				outcome.innerHTML = ("You chose rock and Computer chose " + compChoice + "...");
+			
+				var result = document.getElementById("result");	
+				result.appendChild(outcome);
+				
+				console.log("You chose rock and Computer chose " + compChoice);
+				if (compChoice == "rock"){
+					console.log("Draw.")
+					
+					var winLoseDraw = document.createElement("h3");
+					winLoseDraw.innerHTML = ("Draw :/");
+			
+					var result = document.getElementById("result");	
+					result.appendChild(winLoseDraw);
+					
+					compPick();	
+					countRounds();
+				}
+				else if (compChoice == "paper"){
+					console.log("You lose.")
+					
+					var winLoseDraw = document.createElement("h3");
+					winLoseDraw.innerHTML = ("You lose. :( ");
+			
+					var result = document.getElementById("result");	
+					result.appendChild(winLoseDraw);
+					
+					compPick();
+					countRounds();					
+				}
+				else {
+					console.log("You win!")
+
+					var winLoseDraw = document.createElement("h3");
+					winLoseDraw.innerHTML = ("You win! :D");
+			
+					var result = document.getElementById("result");	
+					result.appendChild(winLoseDraw);
+					
+					compPick();
+					countRounds();
+				}
+									
+			};
+			
+			function pickPaper(){
+
+				var outcome = document.createElement("p");
+				outcome.innerHTML = ("You chose paper and Computer chose " + compChoice + "...");
+			
+				var result = document.getElementById("result");	
+				result.appendChild(outcome);
+				
+				console.log("You chose Paper and Computer chose " + compChoice);
+				if (compChoice == "rock"){
+					console.log("You win!");
+
+					var winLoseDraw = document.createElement("h3");
+					winLoseDraw.innerHTML = ("You win! :D");
+			
+					var result = document.getElementById("result");	
+					result.appendChild(winLoseDraw);
+
+					compPick();	
+					countRounds();
+				}
+				
+				else if (compChoice == "paper"){
+					console.log("Draw.");
+
+					var winLoseDraw = document.createElement("h3");
+					winLoseDraw.innerHTML = ("Draw :/");
+			
+					var result = document.getElementById("result");	
+					result.appendChild(winLoseDraw);
+					
+					compPick();	
+					countRounds();					
+				}
+				
+				else {
+					console.log("You lose.");
+
+					var winLoseDraw = document.createElement("h3");
+					winLoseDraw.innerHTML = ("You lose. :( ");
+			
+					var result = document.getElementById("result");	
+					result.appendChild(winLoseDraw);
+
+					compPick();	
+					countRounds();
+				}
+			};
+			
+			function pickScissors(){
+				
+				var outcome = document.createElement("p");
+				outcome.innerHTML = ("You chose scissors and Computer chose " + compChoice + "...");
+			
+				var result = document.getElementById("result");	
+				result.appendChild(outcome);
+				
+				console.log("You chose Scissors and Computer chose " + compChoice);
+				if (compChoice == "rock"){
+					console.log("You lose.");
+					
+					var winLoseDraw = document.createElement("h3");
+					winLoseDraw.innerHTML = ("You lose :( ");
+			
+					var result = document.getElementById("result");	
+					result.appendChild(winLoseDraw);
+					
+					compPick();	
+					countRounds();					
+				}
+				
+				else if (compChoice == "paper"){
+					console.log("You win!");
+
+					var winLoseDraw = document.createElement("h3");
+					winLoseDraw.innerHTML = ("You win! :D");
+			
+					var result = document.getElementById("result");	
+					result.appendChild(winLoseDraw);
+
+					compPick();	
+					countRounds();
+				}
+				
+				else {
+					console.log("Draw.");
+					
+					var winLoseDraw = document.createElement("h3");
+					winLoseDraw.innerHTML = ("Draw :/");
+			
+					var result = document.getElementById("result");	
+					result.appendChild(winLoseDraw);
+					
+					compPick();	
+					countRounds();
+				}
+			};
+	
+		//5. make function to reset the game
+			function playAgain(){
+				round = 0;
+				compPick();
+				getRounds();
+				document.getElementById("result").innerHTML = "";
+				document.getElementById("rock").disabled = false;
+				document.getElementById("paper").disabled = false;
+				document.getElementById("scissors").disabled = false;
+				
+				return round;
+		};
+		</script>
+		<link rel="stylesheet" href="WiseJacquelynAssignment3rps.css">
+	</head>
+	<body>
+		<h1>rock, paper, scissors</h1>
+		<!--make three buttons for use choices-->
+			<!--each button will have the same class, but different id-->	
+		<div class="userChoice">
+			<button type="button" id="rock" onclick="pickRock()"><img id="buttonPic" src="https://i.ibb.co/pRw498f/rock.png" alt="Rock"></button>
+			<button type="button" id="paper" onclick="pickPaper()"><img id="buttonPic" src="https://i.ibb.co/hXVhwmx/paper.png" alt="Paper"></button>
+			<button type="button" id="scissors" onclick="pickScissors()"><img id="buttonPic" src="https://i.ibb.co/gZPW1gN/scissors.png" alt="Scissors"> </button>	
+		</div>
+		<!--create empty div where outcome will appear-->
+		<br><br>
+		<p class="result" id="result">
+		</p>
+		<button type="button" id="playAgain" onclick="playAgain()">Play Again</button>
+	</body>
+</html>
+	

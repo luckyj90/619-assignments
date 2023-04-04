@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Old MacDonald</title>
+		<script>
+		//window.onload to function to find button
+		//add event listener to button
+			window.onload = function(){
+				var button = document.getElementById("button");
+				button.onclick = generateAnimal;
+			}
+		//make variables to be used in functions	
+			var animalAnswer
+			var noiseClue
+			var animalGuess
+			var answer
+			
+		//on click generate animal sound clue
+			function generateAnimal(){
+				var farmAnimals = ["cow", "horse", "sheep", "chicken", "dog", "duck", "pig", "cat", "bee"];
+				var animalNoise = ["moo", "neigh", "baa", "cluck", "bark", "quack", "oink", "meow", "buzz"];
+				
+				var randAnimal = Math.floor(Math.random() * farmAnimals.length);
+				
+				animalAnswer = farmAnimals[randAnimal];
+				noiseClue = animalNoise[randAnimal];
+				
+				console.log(animalAnswer);
+				console.log(noiseClue);
+				
+				var songString = " E I E I O " + " with a " + noiseClue + noiseClue + " here. And a " + noiseClue + noiseClue + " there. Here a " + noiseClue + ". There a " + noiseClue + ". Everywhere a " + noiseClue + noiseClue + "."
+				
+			//create new elements with text
+				var animalOutput = document.createElement("p");
+				animalOutput.innerHTML = songString;
+				
+			//add new elements to page
+				var animalSection = document.getElementById("animalSection");
+				animalSection.appendChild(animalOutput);
+
+				return animalAnswer, noiseClue;			
+			};
+
+		//create a function to capture and evaluate animal guesses
+
+			function checkGuess() {
+				animalGuess = document.getElementById("animal").value;
+				
+				console.log(animalGuess)
+			  
+				if (animalGuess == animalAnswer) {
+					answer = "You're right! Old MacDonald has a " + animalAnswer + "!";
+				} 
+				else {
+					answer = "Sorry, Old MacDonald has a " + animalAnswer + ".";
+				}
+				
+				console.log(answer)
+				
+			//give user feedback
+				var answerOutput = document.createElement("p");
+				answerOutput.innerHTML = answer;
+				
+			
+				var answerSection = document.getElementById("answerSection");
+				answerSection.appendChild(answerOutput);
+				
+				return answer, animalGuess
+		};
+
+		</script>
+	</head> 
+	<body>
+		<p>Old MacDonald had a farm. E I E I O. And on that farm he had a...</p>
+		<div id="animalSection"></div><br>
+		<input type="button" id="button" value="Give me a clue!"><br>
+		<P>Animal:</p>
+		<input type="text" id="animal">
+		<input type="button" id="guess" value="Is it this animal?" onclick="checkGuess()"><br>
+		<div id="answerSection"></div><br>
+	</body>
+	<footer>
+	</footer>
+</html>
+
+
+
+	
+	

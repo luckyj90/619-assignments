@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Max Number</title>
+		<script>	
+			function max(x, y) {
+				x = Number(document.getElementById("x").value)
+				y = Number(document.getElementById("y").value)
+				if (x > y) {
+					window.alert(x + (" is the larger number."))
+					}
+				else if (x == y) {
+					window.alert("Both numbers are equal.")
+					}
+				else {
+					window.alert(y + (" is the larger number."))
+					}
+			};			
+		</script>
+		<style>
+			body {text-align: center;}
+		</style>
+	</head>
+	<body>
+		<h1>Which number is larger?</h1>
+		<p>Select two numbers and then click "Compare!"</p>
+		<input type="number" id="x"></input>
+		<input type="number" id="y"></input>
+		<br></br>
+		<button id="button" type="button" onClick="max(x, y)">Compare!</button> 
+	</body>
+	<footer>
+	</footer>
+</html>
